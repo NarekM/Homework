@@ -1,6 +1,6 @@
 package com.epam.homework.university.models;
 
-import com.epam.homework.university.Helper;
+import com.epam.homework.helpers.Helper;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;

@@ -1,6 +1,8 @@
 package com.epam.homework.university.models;
 
 public class Course {
+    private final int MIN = 0;
+    private final int MAX = 10;
     private String subject;
     private int score;
 
@@ -22,7 +24,7 @@ public class Course {
 
     public Course(String subject, int score) {
         this.subject = subject;
-        if (score < 0 || score > 10){
+        if (score < MIN || score > MAX){
             throw new RuntimeException("Score must be in the range of 0-10");
         }
         this.score = score;

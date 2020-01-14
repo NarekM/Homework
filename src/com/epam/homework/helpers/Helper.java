@@ -1,4 +1,4 @@
-package com.epam.homework.university;
+package com.epam.homework.helpers;
 
 import com.epam.homework.university.models.Faculty;
 import com.epam.homework.university.models.Group;
@@ -24,5 +24,11 @@ public class Helper {
             temp[arr.length] = item;
         }
         return temp;
+    }
+
+    public static void validateArray(Object[] array, String message){
+        if (array == null || array.length == 0){
+            throw new RuntimeException(message);
+        }
     }
 }

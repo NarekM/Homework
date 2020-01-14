@@ -1,6 +1,6 @@
 package com.epam.homework.university.models;
 
-import com.epam.homework.university.Helper;
+import com.epam.homework.helpers.Helper;
 
 import java.text.DecimalFormat;
 
@@ -22,16 +22,13 @@ public class Faculty {
 
     public Faculty(String name, Group[] groups) {
         this.name = name;
-        if (groups == null || groups.length == 0){
-            throw new RuntimeException("Faculty "+ name + " doesn't have any groups");
-        }
+        Helper.validateArray(groups, "Faculty "+ name + " doesn't have any groups");
         this.groups = groups;
     }
 
     public Group[] addGroup(Group group){
-        if (groups == null || groups.length == 0){
-            throw new RuntimeException("Faculty "+ name + " doesn't have any groups");
-        } else if (getGroup(group.getName()) != null){
+        Helper.validateArray(groups, "Faculty "+ name + " doesn't have any groups");
+        if (getGroup(group.getName()) != null){
             throw new RuntimeException("Faculty "+ name + " already has group named " + group.getName());
         }else{
             groups = (Group[]) Helper.extendArray(groups,group);
@@ -40,9 +37,7 @@ public class Faculty {
     }
 
     public Group getGroup(String name){
-        if (groups == null){
-            throw new RuntimeException("Faculty doesn't have groups");
-        }
+        Helper.validateArray(groups, "Faculty "+ name + " doesn't have any groups");
         for (Group group : groups) {
             if (group.getName().equals(name)){
                 return group;
@@ -56,6 +51,6 @@ public class Faculty {
         for (Group group : groups) {
             total += group.getAverageScoreBySubject(subject);
         }
-        return Double.parseDouble(new DecimalFormat("#.##").format(((double) total)/groups.length));
+        return Double.parseDouble(new DecimalFormat("#.##").format(total/groups.length));
     }
 }

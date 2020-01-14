@@ -1,6 +1,6 @@
 package com.epam.homework.university.models;
 
-import com.epam.homework.university.Helper;
+import com.epam.homework.helpers.Helper;
 
 public class University {
     private String name;
@@ -9,9 +9,7 @@ public class University {
 
     public University(String name, Faculty[] faculties) {
         this.name = name;
-        if (faculties == null || faculties.length == 0){
-            throw new RuntimeException("University "+ name +" doesn't have faculties");
-        }
+        Helper.validateArray(faculties, "University "+ name +" doesn't have faculties");
         this.faculties = faculties;
     }
 
@@ -24,6 +22,7 @@ public class University {
     }
 
     public Faculty getFaculty(String name){
+        Helper.validateArray(faculties, "University "+ name +" doesn't have faculties");
         for (Faculty faculty: faculties) {
             if (faculty.getName().equals(name)){
                 return faculty;

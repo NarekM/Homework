@@ -1,6 +1,6 @@
 package com.epam.homework.university.models;
 
-import com.epam.homework.university.Helper;
+import com.epam.homework.helpers.Helper;
 
 import java.text.DecimalFormat;
 
@@ -25,19 +25,15 @@ public class Group {
         if (students == null || students.length == 0){
             throw new RuntimeException("Group must have at lease one student");
         }
+        Helper.validateArray(students, "Group " + name + " must have at lease one student");
         this.students = students;
     }
 
     public void addStudent(Student student){
-        validateGroup();
+        Helper.validateArray(students, "Group " + name + " must have at lease one student");
         students = (Student[]) (Helper.extendArray(students, student));
     }
 
-    private void validateGroup(){
-        if (students == null || students.length == 0){
-            throw new RuntimeException("Group must have at lease one student");
-        }
-    }
 //    private Student[] extendArray(Student[] students, Student student){
 //        Student[] temp = new Student[students.length + 1];
 //        for (int i = 0; i < temp.length-1; i++) {
