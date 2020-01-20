@@ -34,15 +34,6 @@ public class Group {
         students = (Student[]) (Helper.extendArray(students, student));
     }
 
-//    private Student[] extendArray(Student[] students, Student student){
-//        Student[] temp = new Student[students.length + 1];
-//        for (int i = 0; i < temp.length-1; i++) {
-//            temp[i] = students[i];
-//        }
-//        temp[students.length] = student;
-//        return temp;
-//    }
-
     public double getAverageScoreBySubject(String subject){
         double total = 0;
         for (Student student : students) {

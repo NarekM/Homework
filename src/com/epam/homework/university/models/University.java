@@ -31,7 +31,6 @@ public class University {
         return null;
     }
 
-    //todo
     public double getAverageScoreBySubject(String subject){
         double total = 0;
         for (Faculty faculty : faculties) {
