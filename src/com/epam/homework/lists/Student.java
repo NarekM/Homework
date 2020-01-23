@@ -1,5 +1,7 @@
 package com.epam.homework.lists;
 
+import java.util.Objects;
+
 public class Student implements Comparable<Student>{
     private String firstName;
     private String lastName;
@@ -47,5 +49,20 @@ public class Student implements Comparable<Student>{
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return age == student.age &&
+                Objects.equals(firstName, student.firstName) &&
+                Objects.equals(lastName, student.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, age);
     }
 }

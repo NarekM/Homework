@@ -14,6 +14,7 @@ public class Main {
         Student st6 = new Student("Simon", "Whitaker", 18);
         Student st7 = new Student("Andrew", "Johnson", 17);
 
+/*
         //1st task
         List<Student> students = new ArrayList<Student>(){{
             add(st1);
@@ -38,8 +39,32 @@ public class Main {
         System.out.println(Arrays.toString(stArr));
         LinkedList<Student> studentList = new LinkedList<Student>(Arrays.asList(stArr));
         System.out.println(studentList);
+*/
 
-
+        //3rd task
+//        StudentList stList = new StudentList();
+        StudentList stList = new StudentList(-1);
+        System.out.println(stList.getCap());
+        stList.add(st1);
+        System.out.println(stList.getCap());
+        stList.add(st2);
+        System.out.println(stList.getCap());
+        stList.add(st3);
+        stList.add(st4);
+        stList.add(st5);
+        stList.add(st6);
+        System.out.println(stList.getCap());
+        stList.add(st7);
+        stList.add(st1);
+        stList.add(st2);
+        stList.add(st3);
+        stList.add(st4);
+        System.out.println(stList.getCap());
+        stList.add(st5);
+        stList.add(st6);
+        stList.add(st7);
+        System.out.println(stList.getCap());
+        System.out.println(stList);
 
     }
 }
