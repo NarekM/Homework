@@ -5,7 +5,6 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-
         Student st1 = new Student("John", "Doe", 16);
         Student st2 = new Student("Alexander", "Gates", 18);
         Student st3 = new Student("Simon", "Miller", 20);
@@ -42,29 +41,25 @@ public class Main {
 */
 
         //3rd task
+//        StudentList stList = new StudentList(4);
 //        StudentList stList = new StudentList();
-        StudentList stList = new StudentList(-1);
-        System.out.println(stList.getCap());
-        stList.add(st1);
-        System.out.println(stList.getCap());
-        stList.add(st2);
-        System.out.println(stList.getCap());
-        stList.add(st3);
-        stList.add(st4);
-        stList.add(st5);
-        stList.add(st6);
-        System.out.println(stList.getCap());
-        stList.add(st7);
-        stList.add(st1);
-        stList.add(st2);
-        stList.add(st3);
-        stList.add(st4);
-        System.out.println(stList.getCap());
-        stList.add(st5);
-        stList.add(st6);
-        stList.add(st7);
-        System.out.println(stList.getCap());
-        System.out.println(stList);
+//        stList.add(st1);
+//        stList.add(st2);
+//        stList.add(st3);
+//        stList.add(st4);
+//        stList.add(st5);
+//        stList.add(st6);
+//        stList.add(st7);
+//        System.out.println("stList.size() = " + stList.size());
+//        for(int i = 0; i < stList.size(); i++){
+//            System.out.println("stList.get("+i+") = " + stList.get(i));
+//        }
+//        for(int i = stList.size() - 1; i >= 0; i--){
+//            stList.remove(stList.get(i));
+//            System.out.println(stList);
+//        }
+
+        //4th task
 
     }
 }

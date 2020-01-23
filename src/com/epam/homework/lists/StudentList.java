@@ -5,11 +5,6 @@ public class StudentList {
 
     private int size = 0;
 
-    //todo this method is for testing, it should be deleted
-    public int getCap() {
-        return students.length;
-    }
-
     private Student[] students;
 
     public StudentList() {
@@ -24,28 +19,36 @@ public class StudentList {
         students = new Student[capacity];
     }
 
-    public void add(Student s) {
+    public void add(Student student) {
         ensureCapacity();
-        students[size] = s;
+        students[size] = student;
         size++;
     }
 
-    public void remove(Student s) {
-
+    public void remove(Student student) {
+        for (int i = 0; i < students.length; i++) {
+            if (student.equals(students[i])) {
+                if (i == students.length - 1) {
+                    students[i] = null;
+                    size--;
+                } else {
+                    removeFromStudents(i);
+                }
+            }
+        }
     }
 
     public int size() {
         return size;
     }
 
-    //todo finish this method
     public Student get(int index) {
         if (index >= size) {
             throw new ArrayIndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         } else if (index < 0) {
             throw new ArrayIndexOutOfBoundsException(index);
         }
-        return null;
+        return students[index];
     }
 
     private void extendStudents() {
@@ -62,13 +65,20 @@ public class StudentList {
         }
     }
 
+    private void removeFromStudents(int index) {
+        for (int i = index; i < size - 1; i++) {
+            students[i] = students[i + 1];
+        }
+        students[--size] = null;
+    }
+
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder("[");
         for (int i = 0; i < size - 1; i++) {
             str = str.append(students[i] + ", ");
         }
-        str.append(students[size - 1] + "]");
+        str.append((size > 0 ? students[size - 1] : "") + "]");
         return str.toString();
     }
 }
