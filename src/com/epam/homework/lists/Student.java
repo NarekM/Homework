@@ -38,8 +38,8 @@ public class Student implements Comparable<Student>{
     }
 
     @Override
-    public int compareTo(Student s) {
-        return s.getLastName().compareTo(lastName);
+    public int compareTo(Student student) {
+        return lastName.compareTo(student.getLastName());
     }
 
     @Override
@@ -52,10 +52,10 @@ public class Student implements Comparable<Student>{
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
+    public boolean equals(Object st) {
+        if (this == st) return true;
+        if (st == null || getClass() != st.getClass()) return false;
+        Student student = (Student) st;
         return age == student.age &&
                 Objects.equals(firstName, student.firstName) &&
                 Objects.equals(lastName, student.lastName);
