@@ -12,11 +12,8 @@ public class Main {
 
         //1st task
 //        List<Student> students = new ArrayList<Student>(Arrays.asList(stArr));
-//
 //        System.out.println(students);
-//
 //        Collections.sort(students, new StudentComparator());
-//
 //        System.out.println(students);
 
 
@@ -40,6 +37,6 @@ public class Main {
         //4th task
 //        StudentLinkedList list = initializer.initStudentLinkedList();
 //        System.out.println(list);
-        initializer.printFirstAndLast();
+//        initializer.printFirstAndLast();
     }
 }

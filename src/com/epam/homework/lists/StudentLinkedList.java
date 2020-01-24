@@ -74,9 +74,4 @@ public class StudentLinkedList {
         str.append((size > 0 ? last.getItem() : "") + "]");
         return str.toString();
     }
-
-    //todo for testing purpose, delete when finished
-    public void printInfo(){
-        System.out.println(String.format("Size: %s, first: %s, last: %s", size, first.getItem(), last.getItem()));
-    }
 }

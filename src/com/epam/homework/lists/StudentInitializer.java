@@ -3,7 +3,7 @@ package com.epam.homework.lists;
 public class StudentInitializer {
     private Student[] students = {
             new Student("John", "Doe", 16),
-            new Student("Alexander", null, 18),
+            new Student("Alexander", "Gates", 18),
             new Student("Simon", "Miller", 20),
             new Student("Alexander", "Anderson", 17),
             new Student("Tim", "Jameson", 19),

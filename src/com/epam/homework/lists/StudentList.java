@@ -1,7 +1,7 @@
 package com.epam.homework.lists;
 
 public class StudentList {
-    private final int DEFAULT_CAPACITY = 10;
+    private static final int DEFAULT_CAPACITY = 10;
 
     private int size = 0;
 
