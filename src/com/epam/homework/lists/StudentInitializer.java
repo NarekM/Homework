@@ -42,7 +42,7 @@ public class StudentInitializer {
 
     public void printFirstAndLast(){
         for (Student student : students) {
-            System.out.println(String.format("firstname: %s, lastname: %s",student.getFirstName(), student.getLastName()));
+            System.out.println(student.fullName());
         }
     }
 }

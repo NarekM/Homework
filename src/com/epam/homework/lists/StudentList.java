@@ -34,6 +34,7 @@ public class StudentList {
                 } else {
                     removeFromStudents(i);
                 }
+                break;
             }
         }
     }

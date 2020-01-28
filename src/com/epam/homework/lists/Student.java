@@ -42,6 +42,10 @@ public class Student implements Comparable<Student>{
         return lastName.compareTo(student.getLastName());
     }
 
+    public String fullName(){
+        return firstName + " " + lastName;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
