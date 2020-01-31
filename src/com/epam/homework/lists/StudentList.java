@@ -1,6 +1,8 @@
 package com.epam.homework.lists;
 
-public class StudentList {
+import java.util.Iterator;
+
+public class StudentList implements Iterable<Student> {
     private static final int DEFAULT_CAPACITY = 10;
 
     private int size = 0;
@@ -14,7 +16,6 @@ public class StudentList {
     public StudentList(int capacity) {
         if (capacity < 0) {
             throw new IllegalArgumentException("Illegal capacity: " + capacity);
-
         }
         students = new Student[capacity];
     }
@@ -44,10 +45,8 @@ public class StudentList {
     }
 
     public Student get(int index) {
-        if (index >= size) {
+        if (index >= size || index < 0) {
             throw new ArrayIndexOutOfBoundsException("Index: " + index + ", Size: " + size);
-        } else if (index < 0) {
-            throw new ArrayIndexOutOfBoundsException(index);
         }
         return students[index];
     }
@@ -81,5 +80,22 @@ public class StudentList {
         }
         str.append((size > 0 ? students[size - 1] : "") + "]");
         return str.toString();
+    }
+
+    @Override
+    public Iterator<Student> iterator() {
+        return new Iterator<Student>() {
+            private int current = 0;
+
+            @Override
+            public boolean hasNext() {
+                return current < size;
+            }
+
+            @Override
+            public Student next() {
+                return students[current++];
+            }
+        };
     }
 }

@@ -14,12 +14,6 @@ public class StudentInitializer {
     public StudentInitializer() {
     }
 
-    public StudentInitializer(Student[] students) {
-        if (students != null) {
-            this.students = students;
-        }
-    }
-
     public Student[] initStudentArray() {
         return students.clone();
     }
@@ -40,9 +34,16 @@ public class StudentInitializer {
         return studentList;
     }
 
-    public void printFirstAndLast(){
+    public void printFirstAndLast(Iterable<Student> students){
+        StringBuilder studentFullNames = new StringBuilder("");
         for (Student student : students) {
-            System.out.println(student.fullName());
+            studentFullNames.append(student.fullName() + ", ");
+        }
+        if (studentFullNames.length() > 0){
+            String message = studentFullNames.substring(0,studentFullNames.length() - 2);
+            System.out.println(message);
+        } else {
+            System.out.println("No students");
         }
     }
 }

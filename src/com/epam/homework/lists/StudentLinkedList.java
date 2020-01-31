@@ -1,8 +1,9 @@
 package com.epam.homework.lists;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class StudentLinkedList {
+public class StudentLinkedList implements Iterable<Student> {
     private int size = 0;
     private StudentNode first;
     private StudentNode last;
@@ -73,5 +74,24 @@ public class StudentLinkedList {
         }
         str.append((size > 0 ? last.getItem() : "") + "]");
         return str.toString();
+    }
+
+    @Override
+    public Iterator<Student> iterator() {
+        return new Iterator<Student>() {
+            private StudentNode current = first;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public Student next() {
+                Student student = current.getItem();
+                current = current.getNext();
+                return student;
+            }
+        };
     }
 }
