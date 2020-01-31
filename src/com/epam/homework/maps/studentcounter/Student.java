@@ -57,18 +57,9 @@ public class Student {
         this.faculty = faculty;
     }
 
-    public String fullName() {
-        return firstName + " " + lastName;
-    }
-
     @Override
     public String toString() {
-        return "Student{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
+        return firstName + " " + lastName;
     }
 
     @Override

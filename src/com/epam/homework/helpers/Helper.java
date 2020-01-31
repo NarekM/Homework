@@ -31,4 +31,8 @@ public class Helper {
             throw new RuntimeException(message);
         }
     }
+
+    public static String capitalizeFirstLetter(String text){
+        return text.substring(0, 1).toUpperCase() + text.substring(1).toLowerCase();
+    }
 }
