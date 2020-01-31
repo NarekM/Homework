@@ -1,4 +1,4 @@
-package com.epam.homework.maps;
+package com.epam.homework.maps.studentcounter;
 
 import java.util.Objects;
 
