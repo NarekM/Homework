@@ -16,11 +16,11 @@ public class Main {
         StringBuilder message;
         int[] holidays = month.getHolidays();
         if (holidays.length < 1) {
-            message = new StringBuilder("No holidays in " + Helper.capitalizeFirstLetter(month.toString()));
+            message = new StringBuilder("No holidays in ").append(Helper.capitalizeFirstLetter(month.toString()));
         } else {
-            message = new StringBuilder("Holidays in " + month + ": " + holidays[0]);
+            message = new StringBuilder("Holidays in ").append(month).append(": ").append(holidays[0]);
             for (int i = 1; i < holidays.length; i++) {
-                message.append(", " + holidays[i]);
+                message.append(", ").append(holidays[i]);
             }
         }
         System.out.println(message);
