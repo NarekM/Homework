@@ -19,16 +19,20 @@ public class Counter {
     }
 
     public Map<Faculty, Integer> countStudentsInFaculties(List<Student> students) {
-        Map<Faculty, Integer> facultyMap = new HashMap<>();
+        Map<Faculty, Integer> facultyMap = initFacultyMap(Faculty.values());
         for (Student student : students) {
             Faculty faculty = student.getFaculty();
             Integer count = facultyMap.get(faculty);
-            if (count == null) {
-                facultyMap.put(faculty, 1);
-            } else {
                 facultyMap.put(faculty, ++count);
-            }
         }
         return facultyMap;
+    }
+
+    private Map<Faculty, Integer> initFacultyMap(Faculty[] faculties) {
+        Map<Faculty, Integer> map = new HashMap<>();
+        for (Faculty faculty : faculties) {
+            map.put(faculty, 0);
+        }
+        return map;
     }
 }
