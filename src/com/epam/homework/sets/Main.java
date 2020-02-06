@@ -1,16 +1,36 @@
 package com.epam.homework.sets;
 
-import java.util.HashMap;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        TreeSet<String> set = new TreeSet<>();
-        set.add(null);
+//        TreeSet<String> set = new TreeSet<>();
+//        set.add(null);
 //        set.contains(null);
-        TreeMap<String, String> map = new TreeMap<>();
-        map.put(null, "box");
+//        TreeMap<String, String> map = new TreeMap<>();
+//        map.put(null, "box");
 //        System.out.println("map.get(null) = " + map.get(null));
+
+//        CustomTree<String> set = new CustomTree<>();
+//        set.add("Hello");
+//        set.add("world");
+//        set.add("another");
+//        set.add("text");
+        CustomTree<Integer> set = new CustomTree<>();
+        set.add(8);
+        set.add(10);
+        set.add(5);
+        set.add(11);
+//        System.out.println(set);
+//        System.out.println("set.contains(\"world\") = " + set.contains("text"));
+//        set.traverse();
+
+//        for (Integer integer : set) {
+//            System.out.println(integer);
+//        }
+        Iterator<Integer> iterator = set.iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
     }
 }
