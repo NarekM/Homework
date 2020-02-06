@@ -1,6 +1,7 @@
 package com.epam.homework.sets;
 
 import java.util.Iterator;
+import java.util.Set;
 import java.util.Stack;
 
 public class CustomTree<T extends Comparable<T>> implements Iterable<T> {
@@ -19,6 +20,7 @@ public class CustomTree<T extends Comparable<T>> implements Iterable<T> {
         Node<T> node = new Node<>(item, null, null, null);
         if (root == null) {
             root = node;
+            size++;
             return true;
         }
         return addNode(node, root);
@@ -55,18 +57,74 @@ public class CustomTree<T extends Comparable<T>> implements Iterable<T> {
     }
 
     private boolean contains(T item, Node<T> searchedInNode) {
+        return getNode(item) !=null;
+    }
+
+    public Node<T> getNode(T item) {
+        return getNode(item, root);
+    }
+
+    private Node<T> getNode(T item, Node<T> searchedInNode) {
         if (item == null) {
             throw new IllegalArgumentException("Can not contain null value");
         }
         if (searchedInNode == null) {
-            return false;
+            return null;
         } else if (item.compareTo(searchedInNode.getValue()) < 0) {
-            return contains(item, searchedInNode.getLeft());
+            return getNode(item, searchedInNode.getLeft());
         } else if (item.compareTo(searchedInNode.getValue()) > 0) {
-            return contains(item, searchedInNode.getRight());
+            return getNode(item, searchedInNode.getRight());
         } else {
-            return true;
+            return searchedInNode;
         }
+    }
+
+    public boolean remove(T obj) {
+        Node<T> node = getNode(obj);
+        if (node == null) {
+            return false;
+        }
+        if (node.getParent() != null){
+            node.getParent().setRight(node.getRight());
+            node.getRight().setParent(node.getParent());
+
+            node.getParent().setLeft(node.getLeft());
+            node.getLeft().setParent(node.getParent());
+        } else {
+            if (node.getRight() != null){
+                Node<T> mostLeft = getMostLeft(node.getRight());
+                if (mostLeft == node.getRight()){
+                    if (node.getLeft() != null){
+                        mostLeft.setLeft(node.getLeft());
+                        node.getLeft().setParent(mostLeft);
+                    }
+                } else {
+                    mostLeft.getParent().setLeft(mostLeft.getRight());
+                    mostLeft.setLeft(node.getLeft());
+                    mostLeft.setParent(null);
+                    mostLeft.setRight(node.getRight());
+                }
+//                root = mostLeft;
+
+                root = mostLeft;
+            } else {
+                if (node.getLeft() != null) {
+                    root = node.getLeft();
+                    node.setLeft(null);
+                    root.setParent(null);
+                } else {
+                    root = null;
+                }
+            }
+        }
+        return true;
+    }
+
+    private Node<T> getMostLeft(Node<T> rootNode){
+        while (rootNode.getLeft() != null) {
+            rootNode = rootNode.getLeft();
+        }
+        return rootNode;
     }
 
     public void traverse() {
@@ -101,8 +159,6 @@ public class CustomTree<T extends Comparable<T>> implements Iterable<T> {
 //    }
 
 
-
-
     @Override
     public Iterator<T> iterator() {
         Node<T> mostLeftNode = root;
@@ -128,7 +184,7 @@ public class CustomTree<T extends Comparable<T>> implements Iterable<T> {
             }
 
             private void fillStackWithLefts(Node<T> rootNode) {
-                if (rootNode != null){
+                if (rootNode != null) {
                     stack.push(rootNode);
                     fillStackWithLefts(rootNode.getLeft());
                 }

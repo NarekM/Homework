@@ -8,7 +8,6 @@ public class Node<T> {
 
     public Node(T value, Node parent, Node left, Node right) {
         this.value = value;
-        this.parent = parent;
         this.left = left;
         this.right = right;
     }
@@ -43,5 +42,10 @@ public class Node<T> {
 
     public void setRight(Node<T> right) {
         this.right = right;
+    }
+
+    @Override
+    public String toString() {
+        return "value: "+value.toString();
     }
 }

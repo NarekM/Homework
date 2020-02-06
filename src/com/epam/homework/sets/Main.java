@@ -20,6 +20,8 @@ public class Main {
         set.add(8);
         set.add(10);
         set.add(5);
+        set.add(30);
+        set.add(3);
         set.add(11);
 //        System.out.println(set);
 //        System.out.println("set.contains(\"world\") = " + set.contains("text"));
@@ -28,9 +30,11 @@ public class Main {
 //        for (Integer integer : set) {
 //            System.out.println(integer);
 //        }
+        set.remove(8);
+
         Iterator<Integer> iterator = set.iterator();
-        while (iterator.hasNext()){
-            System.out.println(iterator.next());
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + "    ");
         }
     }
 }
