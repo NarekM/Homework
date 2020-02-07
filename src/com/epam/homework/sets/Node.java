@@ -1,17 +1,12 @@
 package com.epam.homework.sets;
 
-public class Node<T> {
+public class Node<T extends Comparable<T>> {
     private T value;
-//    private Node<T> parent;
     private Node<T> left;
     private Node<T> right;
 
-    public Node(T value,
-//                Node parent,
-                Node left, Node right) {
+    public Node(T value) {
         this.value = value;
-        this.left = left;
-        this.right = right;
     }
 
     public T getValue() {
@@ -21,14 +16,6 @@ public class Node<T> {
     public void setValue(T value) {
         this.value = value;
     }
-
-//    public Node<T> getParent() {
-//        return parent;
-//    }
-//
-//    public void setParent(Node<T> parent) {
-//        this.parent = parent;
-//    }
 
     public Node<T> getLeft() {
         return left;
