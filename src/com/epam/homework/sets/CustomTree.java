@@ -143,9 +143,9 @@ public class CustomTree<T extends Comparable<T>> implements Iterable<T> {
             throw new IllegalArgumentException("Can't remove null");
         }
         if (obj.compareTo(rootNode.getValue()) < 0) {
-            remove(obj, rootNode.getLeft());
+            rootNode.setLeft(remove(obj, rootNode.getLeft()));
         } else if (obj.compareTo(rootNode.getValue()) > 0) {
-            remove(obj, rootNode.getRight());
+            rootNode.setRight(remove(obj, rootNode.getRight()));
         } else {
             if (rootNode.getLeft() != null && rootNode.getRight() != null) {
                 // when have 2 childs

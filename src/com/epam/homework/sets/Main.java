@@ -35,6 +35,9 @@ public class Main {
 //        for (Integer integer : set) {
 //            System.out.println(integer);
 //        }
+
+
+        // 3 4 5 8 9 10 11 30
         set.remove(8);
 
         for (Integer integer : set) {
