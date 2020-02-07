@@ -2,11 +2,13 @@ package com.epam.homework.sets;
 
 public class Node<T> {
     private T value;
-    private Node<T> parent;
+//    private Node<T> parent;
     private Node<T> left;
     private Node<T> right;
 
-    public Node(T value, Node parent, Node left, Node right) {
+    public Node(T value,
+//                Node parent,
+                Node left, Node right) {
         this.value = value;
         this.left = left;
         this.right = right;
@@ -20,13 +22,13 @@ public class Node<T> {
         this.value = value;
     }
 
-    public Node<T> getParent() {
-        return parent;
-    }
-
-    public void setParent(Node<T> parent) {
-        this.parent = parent;
-    }
+//    public Node<T> getParent() {
+//        return parent;
+//    }
+//
+//    public void setParent(Node<T> parent) {
+//        this.parent = parent;
+//    }
 
     public Node<T> getLeft() {
         return left;

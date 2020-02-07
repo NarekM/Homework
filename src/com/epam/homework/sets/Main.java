@@ -17,8 +17,13 @@ public class Main {
 //        set.add("another");
 //        set.add("text");
         CustomTree<Integer> set = new CustomTree<>();
+
+
         set.add(8);
         set.add(10);
+        set.add(9);
+        set.add(5);
+        set.add(4);
         set.add(5);
         set.add(30);
         set.add(3);
@@ -32,9 +37,14 @@ public class Main {
 //        }
         set.remove(8);
 
-        Iterator<Integer> iterator = set.iterator();
-        while (iterator.hasNext()) {
-            System.out.print(iterator.next() + "    ");
+        for (Integer integer : set) {
+            System.out.println(integer);
         }
+
+
+//        Iterator<Integer> iterator = set.iterator();
+//        while (iterator.hasNext()) {
+//            System.out.print(iterator.next() + "    ");
+//        }
     }
 }

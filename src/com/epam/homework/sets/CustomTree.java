@@ -17,7 +17,8 @@ public class CustomTree<T extends Comparable<T>> implements Iterable<T> {
         if (item == null) {
             throw new IllegalArgumentException("Can not contain null value");
         }
-        Node<T> node = new Node<>(item, null, null, null);
+//        Node<T> node = new Node<>(item, null, null, null);
+        Node<T> node = new Node<>(item, null, null);
         if (root == null) {
             root = node;
             size++;
@@ -34,14 +35,14 @@ public class CustomTree<T extends Comparable<T>> implements Iterable<T> {
         } else if (node.getValue().compareTo(searchInNode.getValue()) < 0) {
             if (searchInNode.getLeft() == null) {
                 searchInNode.setLeft(node);
-                node.setParent(searchInNode);
+//                node.setParent(searchInNode);
             } else {
                 addNode(node, searchInNode.getLeft());
             }
         } else if (node.getValue().compareTo(searchInNode.getValue()) > 0) {
             if (searchInNode.getRight() == null) {
                 searchInNode.setRight(node);
-                node.setParent(searchInNode);
+//                node.setParent(searchInNode);
             } else {
                 addNode(node, searchInNode.getRight());
             }
@@ -57,7 +58,7 @@ public class CustomTree<T extends Comparable<T>> implements Iterable<T> {
     }
 
     private boolean contains(T item, Node<T> searchedInNode) {
-        return getNode(item) !=null;
+        return getNode(item) != null;
     }
 
     public Node<T> getNode(T item) {
@@ -79,48 +80,96 @@ public class CustomTree<T extends Comparable<T>> implements Iterable<T> {
         }
     }
 
-    public boolean remove(T obj) {
-        Node<T> node = getNode(obj);
-        if (node == null) {
-            return false;
-        }
-        if (node.getParent() != null){
-            node.getParent().setRight(node.getRight());
-            node.getRight().setParent(node.getParent());
-
-            node.getParent().setLeft(node.getLeft());
-            node.getLeft().setParent(node.getParent());
-        } else {
-            if (node.getRight() != null){
-                Node<T> mostLeft = getMostLeft(node.getRight());
-                if (mostLeft == node.getRight()){
-                    if (node.getLeft() != null){
-                        mostLeft.setLeft(node.getLeft());
-                        node.getLeft().setParent(mostLeft);
-                    }
-                } else {
-                    mostLeft.getParent().setLeft(mostLeft.getRight());
-                    mostLeft.setLeft(node.getLeft());
-                    mostLeft.setParent(null);
-                    mostLeft.setRight(node.getRight());
-                }
+    //    public boolean remove(T obj) {
+//        Node<T> node = getNode(obj);
+//        if (node == null) {
+//            return false;
+//        }
+//        // when deleted item is not root
+//        if (node.getParent() != null){
+//            node.getParent().setRight(node.getRight());
+//            node.getRight().setParent(node.getParent());
+//
+//            node.getParent().setLeft(node.getLeft());
+//            node.getLeft().setParent(node.getParent());
+//        } else {
+//            // case when is deleted item is root
+//            if (node.getRight() != null){
+//                Node<T> mostLeft = getMostLeft(node.getRight());
+//                if (mostLeft == node.getRight()){
+//                    if (node.getLeft() != null){
+//                        mostLeft.setLeft(node.getLeft());
+//                        node.getLeft().setParent(mostLeft);
+//                    }
+//                } else {
+//                    mostLeft.getParent().setLeft(mostLeft.getRight());
+//                    mostLeft.setLeft(node.getLeft());
+//                    mostLeft.setParent(null);
+//                    mostLeft.setRight(node.getRight());
+//                }
+////                root = mostLeft;
+//
 //                root = mostLeft;
-
-                root = mostLeft;
-            } else {
-                if (node.getLeft() != null) {
-                    root = node.getLeft();
-                    node.setLeft(null);
-                    root.setParent(null);
-                } else {
-                    root = null;
-                }
-            }
+//            } else {
+//                if (node.getLeft() != null) {
+//                    root = node.getLeft();
+//                    node.setLeft(null);
+//                    root.setParent(null);
+//                } else {
+//                    root = null;
+//                }
+//            }
+//        }
+//        return true;
+//    }
+//
+    public boolean remove(T obj) {
+        if (obj == null){
+            throw new IllegalArgumentException("Can't remove null");
         }
-        return true;
+        if (contains(obj)){
+//            root = remove(obj, root);
+            return remove(obj, root) != null;
+//        return true;
+        }
+        return false;
     }
 
-    private Node<T> getMostLeft(Node<T> rootNode){
+    public Node<T> remove(T obj, Node<T> rootNode) {
+        if (rootNode == null) {
+            return null;
+        }
+        if (obj == null) {
+            throw new IllegalArgumentException("Can't remove null");
+        }
+        if (obj.compareTo(rootNode.getValue()) < 0) {
+            remove(obj, rootNode.getLeft());
+        } else if (obj.compareTo(rootNode.getValue()) > 0) {
+            remove(obj, rootNode.getRight());
+        } else {
+            if (rootNode.getLeft() != null && rootNode.getRight() != null) {
+                // when have 2 childs
+                Node<T> mostLeft = getMostLeft(rootNode.getRight());
+                rootNode.setValue(mostLeft.getValue());
+                Node<T> newRightNode = remove(mostLeft.getValue(), rootNode.getRight());
+                rootNode.setRight(newRightNode);
+                return rootNode;
+            } else if (rootNode.getLeft() != null) {
+                // when have 1 left child
+                return rootNode.getLeft();
+            } else if (rootNode.getRight() != null) {
+                // when have 1 right child
+                return rootNode.getRight();
+            } else {
+                // when is leaf
+                return null;
+            }
+        }
+        return rootNode;
+    }
+
+
+    private Node<T> getMostLeft(Node<T> rootNode) {
         while (rootNode.getLeft() != null) {
             rootNode = rootNode.getLeft();
         }
