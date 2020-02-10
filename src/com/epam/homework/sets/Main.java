@@ -26,7 +26,7 @@ public class Main {
 
         students.remove(new Student("Alexander", "Anderson", 17));
         students.remove(new Student("Simon", "Whitaker", 18));
-        System.out.println("----Alexander Anderson  and Simon should be deleted-----");
+        System.out.println("----Alexander Anderson  and Simon Whitaker should be deleted-----");
         System.out.println("Size is: " + students.getSize());
         printItems(students);
         System.out.println("contains John Doe: " + students.contains(new Student("John", "Doe", 16)));
